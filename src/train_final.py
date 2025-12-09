@@ -16,20 +16,17 @@ class VLADataset(Dataset):
     
     def __getitem__(self, idx):
         return (self.rgb[idx], self.joints[idx], self.instructions[idx], self.actions[idx])
-
-print("🚀 BULLETPROOF TRAINING (num_workers=8)")
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Using device: {device}")
 
 data = torch.load("rtx_dummy.pt")
 dataset = VLADataset(data)
-loader = DataLoader(dataset, batch_size=8, shuffle=True, num_workers=8, pin_memory=True)
-
+loader = DataLoader(dataset, batch_size=8, shuffle=True, num_workers=8, pin_memory=True)# 8 not 12
 from language_biased_vla import LanguageBiasedVLA
 model = LanguageBiasedVLA().to(device)
 optimizer = Adam(model.parameters(), lr=1e-4)
 
-print("Training 50 epochs...")
+print("training 50 epochs...")
 for epoch in tqdm(range(50)):
     model.train()
     epoch_loss = 0
@@ -53,4 +50,3 @@ for epoch in tqdm(range(50)):
         print(f"Epoch {epoch}: Loss {epoch_loss/len(loader):.4f}")
 
 torch.save(model.state_dict(), "language_biased_vla_final.pt")
-print("✅ TRAINING COMPLETE! Model saved.")
