@@ -39,24 +39,14 @@ So language does not just disappear into deep features: it shows up as an explic
   the same architecture can be dropped into a larger VLA setup to study how much of the behavior can be controlled by simple, low‑dimensional language biases.
 
 ## How to run
-setup
+
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-
-create a small RT‑X‑style dummy dataset (1000 samples)
-python3 src/make_dummy_data.py
-
-train 7D Language‑Biased VLA (CPU, 10 epochs)
+-> for create a small RT‑X‑style dummy dataset (1000 samples): python3 src/make_dummy_data.py
 python3 src/train_cpu_short.py
-
-evaluate language‑biased model
-python3 src/eval_vla.py
-
-train + evaluate vision‑only baseline
-python3 src/baseline_eval.py
-
-text
+evaluate language‑biased model: python3 src/eval_vla.py
+train + evaluate vision‑only baseline: python3 src/baseline_eval.py
 
 ## Results (on the small synthetic dataset)
 
