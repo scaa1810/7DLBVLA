@@ -41,12 +41,19 @@ So language does not just disappear into deep features: it shows up as an explic
 ## How to run
 
 python3 -m venv venv
+
 source venv/bin/activate
+
 pip install -r requirements.txt
+
 -> for create a small RT‑X‑style dummy dataset (1000 samples): python3 src/make_dummy_data.py
+
 python3 src/train_cpu_short.py
+
 evaluate language‑biased model: python3 src/eval_vla.py
+
 train + evaluate vision‑only baseline: python3 src/baseline_eval.py
+
 
 ## Results (on the small synthetic dataset)
 
