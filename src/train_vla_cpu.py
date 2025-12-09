@@ -46,4 +46,3 @@ for epoch in tqdm(range(50)):
         print(f"Epoch {epoch}: Loss {epoch_loss/len(loader):.4f}, Bias {epoch_bias/len(loader):.3f}")
 
 torch.save(model.state_dict(), "language_biased_vla_cpu.pt")
-print("✅ CPU TRAINING COMPLETE!")
