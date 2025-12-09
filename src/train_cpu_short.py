@@ -5,9 +5,6 @@ from tqdm import tqdm
 import os
 
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
-
-print("🚀 CPU TRAINING (SHORT RUN, 10 epochs)")
-
 data = torch.load("rtx_dummy.pt")
 print(f"Training on {len(data)} samples")
 
@@ -15,7 +12,6 @@ rgb_all = torch.stack([d['rgb'] for d in data])
 joints_all = torch.zeros(len(data), 14)
 actions_all = torch.stack([d['action'] for d in data])
 instructions_all = [d['instruction'] for d in data]
-
 device = torch.device("cpu")
 print("Using CPU")
 
@@ -47,4 +43,4 @@ for epoch in tqdm(range(10)):
     print(f"Epoch {epoch}: Loss {epoch_loss / max(1, num_batches):.4f}")
 
 torch.save(model.state_dict(), "language_biased_vla_short.pt")
-print("✅ TRAINING COMPLETE! Saved: language_biased_vla_short.pt")
+print("saved @ language_biased_vla_short.pt")
