@@ -67,5 +67,5 @@ Training is short and the dataset is synthetic, but this is enough to show that:
 
 - adding a 7‑D language bias at the action head is **stable**,  
 - it performs at least as well as the baseline, and  
-- it produces clear
+- it produces clear and instruction‑dependent joint‑space biases that can be plotted and inspected.
 
